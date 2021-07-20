@@ -1,13 +1,13 @@
-package com.rectangulared.pizzaviewer;
+package com.rectangulared.pizzabuilder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PizzaViewerApplication {
+public class PizzaBuilderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PizzaViewerApplication.class, args);
+		SpringApplication.run(PizzaBuilderApplication.class, args);
 	}
 
 }

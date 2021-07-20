@@ -1,4 +1,4 @@
-package com.rectangulared.pizzaviewer.entity;
+package com.rectangulared.pizzabuilder.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +13,11 @@ public class Pizza {
     @Column
     private String name;
     @Column
-    @OneToMany
-    @JoinColumn(name="ingredient_id", referencedColumnName = "id")
+    @ManyToMany
+    @JoinTable(name = "pizza_ingredients",
+            joinColumns = { @JoinColumn(name="pizza_id") },
+            inverseJoinColumns = { @JoinColumn(name = "ingredient_id") }
+    )
     private List<Ingredient> ingredients;
     @Column
     @Enumerated(EnumType.STRING)

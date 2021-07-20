@@ -1,15 +1,12 @@
-package com.rectangulared.pizzaviewer.service;
+package com.rectangulared.pizzabuilder.service;
 
-import com.rectangulared.pizzaviewer.DAO.IngredientRepository;
-import com.rectangulared.pizzaviewer.DAO.PizzaRepository;
-import com.rectangulared.pizzaviewer.entity.Ingredient;
-import com.rectangulared.pizzaviewer.entity.Pizza;
-import com.rectangulared.pizzaviewer.entity.PizzaDTO;
+import com.rectangulared.pizzabuilder.DAO.IngredientRepository;
+import com.rectangulared.pizzabuilder.DAO.PizzaRepository;
+import com.rectangulared.pizzabuilder.entity.Ingredient;
+import com.rectangulared.pizzabuilder.entity.Pizza;
+import com.rectangulared.pizzabuilder.entity.PizzaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +18,9 @@ public class PizzaViewerService {
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    public List<Ingredient> getAllIngredients() {
+        return ingredientRepository.findAll();
+    }
 
     public Pizza addPizza(PizzaDTO pizzaDTO) {
         List<Ingredient> ingredients = ingredientRepository.findAllByIdIn(Arrays.asList(pizzaDTO.getIngredients()));

@@ -1,6 +1,6 @@
-package com.rectangulared.pizzaviewer.DAO;
+package com.rectangulared.pizzabuilder.DAO;
 
-import com.rectangulared.pizzaviewer.entity.Ingredient;
+import com.rectangulared.pizzabuilder.entity.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

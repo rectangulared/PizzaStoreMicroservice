@@ -1,6 +1,9 @@
-package com.rectangulared.pizzaviewer.entity;
+package com.rectangulared.pizzabuilder.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -17,9 +20,9 @@ public class Ingredient {
     @Column
     private double price;
 
-    @ManyToMany
-    @JoinColumn(name = "pizza_id", referencedColumnName = "id")
-    private Pizza pizza;
+    @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnore
+    private List<Pizza> pizza;
 
     public Ingredient() {}
 
@@ -61,11 +64,11 @@ public class Ingredient {
         this.price = price;
     }
 
-    public Pizza getPizza() {
+    public List<Pizza> getPizza() {
         return pizza;
     }
 
-    public void setPizza(Pizza pizza) {
+    public void setPizza(List<Pizza> pizza) {
         this.pizza = pizza;
     }
 }

@@ -1,4 +1,4 @@
-package com.rectangulared.pizzaviewer.entity;
+package com.rectangulared.pizzabuilder.entity;
 
 public class PizzaDTO {
     private String name;
