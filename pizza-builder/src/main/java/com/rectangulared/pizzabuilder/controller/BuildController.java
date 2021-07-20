@@ -4,7 +4,7 @@ import com.rectangulared.pizzabuilder.entity.Ingredient;
 import com.rectangulared.pizzabuilder.entity.Pizza;
 import com.rectangulared.pizzabuilder.entity.PizzaDTO;
 import com.rectangulared.pizzabuilder.entity.PizzasForm;
-import com.rectangulared.pizzabuilder.service.PizzaViewerService;
+import com.rectangulared.pizzabuilder.service.PizzaBuilderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,23 +14,23 @@ import java.util.List;
 @RequestMapping("/builder")
 public class BuildController {
 
-    private final PizzaViewerService pizzaViewerService;
+    private final PizzaBuilderService pizzaBuilderService;
 
     @Autowired
-    public BuildController(PizzaViewerService pizzaViewerService) {
-        this.pizzaViewerService = pizzaViewerService;
+    public BuildController(PizzaBuilderService pizzaBuilderService) {
+        this.pizzaBuilderService = pizzaBuilderService;
     }
 
     @GetMapping("/ingredients")
     public List<Ingredient> getAllIngredients() {
-        return pizzaViewerService.getAllIngredients();
+        return pizzaBuilderService.getAllIngredients();
     }
 
     @GetMapping("/form")
     public PizzasForm[] getAllForms() { return PizzasForm.values(); };
 
     @PostMapping
-    public Pizza getPizza(@RequestBody PizzaDTO pizzaDTO) {
-        return pizzaViewerService.addPizza(pizzaDTO);
+    public Pizza addPizza(@RequestBody PizzaDTO pizzaDTO) {
+        return pizzaBuilderService.addPizza(pizzaDTO);
     }
 }

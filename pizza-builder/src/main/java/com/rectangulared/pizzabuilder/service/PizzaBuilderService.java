@@ -1,7 +1,7 @@
 package com.rectangulared.pizzabuilder.service;
 
-import com.rectangulared.pizzabuilder.DAO.IngredientRepository;
-import com.rectangulared.pizzabuilder.DAO.PizzaRepository;
+import com.rectangulared.pizzabuilder.repository.IngredientRepository;
+import com.rectangulared.pizzabuilder.repository.PizzaRepository;
 import com.rectangulared.pizzabuilder.entity.Ingredient;
 import com.rectangulared.pizzabuilder.entity.Pizza;
 import com.rectangulared.pizzabuilder.entity.PizzaDTO;
@@ -11,12 +11,16 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PizzaViewerService {
+public class PizzaBuilderService {
+
+    private final PizzaRepository pizzaRepository;
+    private final IngredientRepository ingredientRepository;
 
     @Autowired
-    private PizzaRepository pizzaRepository;
-    @Autowired
-    private IngredientRepository ingredientRepository;
+    public PizzaBuilderService(PizzaRepository pizzaRepository, IngredientRepository ingredientRepository) {
+        this.pizzaRepository = pizzaRepository;
+        this.ingredientRepository = ingredientRepository;
+    }
 
     public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();

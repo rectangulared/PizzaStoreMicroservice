@@ -1,4 +1,4 @@
-package com.rectangulared.pizzabuilder.DAO;
+package com.rectangulared.pizzabuilder.repository;
 
 import com.rectangulared.pizzabuilder.entity.Pizza;
 import org.springframework.data.jpa.repository.JpaRepository;
