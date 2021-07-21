@@ -1,10 +1,20 @@
 package com.rectangulared.pizzaviewer.entity;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class PizzaDTO {
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
+    @NotEmpty
     private Integer[] ingredients;
+    @NotNull
     private PizzasForm pizzasForm;
+    @NotNull
     private boolean hasCheeseBoards;
+    @NotNull
     private boolean defaultPizza;
 
     public PizzaDTO(String name, Integer[] ingredients, PizzasForm pizzasForm, boolean hasCheeseBoards, boolean defaultPizza) {

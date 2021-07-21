@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class Order {
             inverseJoinColumns = { @JoinColumn(name = "pizza_id") }
     )
     @JsonIgnore
+    @NotNull
+    @NotEmpty
     private List<Pizza> pizzas;
 
     public Order() {}
