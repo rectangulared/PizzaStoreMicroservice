@@ -32,6 +32,15 @@ public class Pizza {
 
     public Pizza() {}
 
+    public Pizza(PizzaDTO pizzaDTO, List<Ingredient> ingredients) {
+        this.id = -1;
+        this.name = pizzaDTO.getName();
+        this.ingredients = ingredients;
+        this.pizzasForm = pizzaDTO.getPizzasForm();
+        this.hasCheeseBoards = pizzaDTO.isHasCheeseBoards();
+        this.defaultPizza = pizzaDTO.isDefaultPizza();
+    }
+
     public int getId() {
         return id;
     }
@@ -80,8 +89,17 @@ public class Pizza {
         this.defaultPizza = defaultPizza;
     }
 
-    public double getPrice() { return price; }
+    public double getPrice() {
+        return price;
+    }
 
-    public void setPrice(double price) { this.price = price; }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double calculatePrice() {
+        double price = ingredients.stream().mapToDouble(Ingredient::getPrice).sum() * pizzasForm.getPriceFactor();
+        return price;
+    }
 }
 

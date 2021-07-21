@@ -22,7 +22,7 @@ public class Ingredient {
 
     @ManyToMany(mappedBy = "ingredients")
     @JsonIgnore
-    private List<Pizza> pizza;
+    private List<Pizza> pizzas;
 
     public Ingredient() {}
 
@@ -64,11 +64,11 @@ public class Ingredient {
         this.price = price;
     }
 
-    public List<Pizza> getPizza() {
-        return pizza;
+    public List<Pizza> getPizzas() {
+        return pizzas;
     }
 
-    public void setPizza(List<Pizza> pizza) {
-        this.pizza = pizza;
+    public void setPizzas(List<Pizza> pizza) {
+        this.pizzas = pizza;
     }
 }

@@ -1,6 +1,9 @@
 package com.rectangulared.pizzabuilder.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -26,6 +29,9 @@ public class Pizza {
     private boolean hasCheeseBoards;
     @Column
     private boolean defaultPizza;
+
+    @Transient
+    private double price;
 
     public Pizza() {}
 
@@ -84,6 +90,19 @@ public class Pizza {
 
     public void setDefaultPizza(boolean defaultPizza) {
         this.defaultPizza = defaultPizza;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double calculatePrice() {
+        double price = ingredients.stream().mapToDouble(Ingredient::getPrice).sum() * pizzasForm.getPriceFactor();
+        return price;
     }
 }
 

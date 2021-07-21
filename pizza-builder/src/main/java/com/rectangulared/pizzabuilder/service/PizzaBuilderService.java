@@ -1,14 +1,15 @@
 package com.rectangulared.pizzabuilder.service;
 
-import com.rectangulared.pizzabuilder.repository.IngredientRepository;
-import com.rectangulared.pizzabuilder.repository.PizzaRepository;
 import com.rectangulared.pizzabuilder.entity.Ingredient;
 import com.rectangulared.pizzabuilder.entity.Pizza;
 import com.rectangulared.pizzabuilder.entity.PizzaDTO;
+import com.rectangulared.pizzabuilder.repository.IngredientRepository;
+import com.rectangulared.pizzabuilder.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaBuilderService {
@@ -27,8 +28,28 @@ public class PizzaBuilderService {
     }
 
     public Pizza addPizza(PizzaDTO pizzaDTO) {
-        List<Ingredient> ingredients = ingredientRepository.findAllByIdIn(Arrays.asList(pizzaDTO.getIngredients()));
-        Pizza pizza = new Pizza(pizzaDTO, ingredients);
+        Pizza pizza = preparePizza(pizzaDTO);
         return pizzaRepository.save(pizza);
+    }
+
+    public Pizza getPizzaById(int id) {
+        Optional<Pizza> tempPizza = pizzaRepository.findById(id);
+        if (tempPizza.isPresent()) {
+            Pizza pizza = tempPizza.get();
+            pizza.setPrice(pizza.calculatePrice());
+            return pizza;
+        }
+        return tempPizza.get();
+    }
+
+    public Pizza savePizzaById(int id, PizzaDTO pizzaDTO) {
+        Pizza pizza = preparePizza(pizzaDTO);
+        pizza.setId(id);
+        return pizzaRepository.save(pizza);
+    }
+
+    private Pizza preparePizza(PizzaDTO pizzaDTO) {
+        List<Ingredient> ingredients = ingredientRepository.findAllByIdIn(Arrays.asList(pizzaDTO.getIngredients()));
+        return new Pizza(pizzaDTO, ingredients);
     }
 }
