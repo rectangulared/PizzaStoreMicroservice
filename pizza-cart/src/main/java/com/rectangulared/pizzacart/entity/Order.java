@@ -27,8 +27,6 @@ public class Order {
             inverseJoinColumns = { @JoinColumn(name = "pizza_id") }
     )
     @JsonIgnore
-    @NotNull
-    @NotEmpty
     private List<Pizza> pizzas;
 
     public Order() {}

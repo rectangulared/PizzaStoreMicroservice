@@ -3,6 +3,8 @@ package com.rectangulared.pizzabuilder.service;
 import com.rectangulared.pizzabuilder.entity.Ingredient;
 import com.rectangulared.pizzabuilder.entity.Pizza;
 import com.rectangulared.pizzabuilder.entity.PizzaDTO;
+import com.rectangulared.pizzabuilder.exception.GlobalExceptionHandler;
+import com.rectangulared.pizzabuilder.exception.NotCompletePizzaException;
 import com.rectangulared.pizzabuilder.repository.IngredientRepository;
 import com.rectangulared.pizzabuilder.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +35,9 @@ public class PizzaBuilderService {
     }
 
     public Pizza getPizzaById(int id) {
-        Optional<Pizza> tempPizza = pizzaRepository.findById(id);
-        if (tempPizza.isPresent()) {
-            Pizza pizza = tempPizza.get();
-            pizza.setPrice(pizza.calculatePrice());
-            return pizza;
-        }
-        return tempPizza.get();
+        Pizza pizza = pizzaRepository.findById(id).orElseThrow(()-> new NotCompletePizzaException());
+        pizza.setPrice(pizza.calculatePrice());
+        return pizza;
     }
 
     public Pizza savePizzaById(int id, PizzaDTO pizzaDTO) {

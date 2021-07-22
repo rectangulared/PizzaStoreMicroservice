@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaViewerService {
@@ -23,5 +24,15 @@ public class PizzaViewerService {
             pizza.setPrice(pizza.calculatePrice());
         }
         return pizzas;
+    }
+
+    public Pizza getPizzaById(int id) {
+        Optional<Pizza> tempPizza = pizzaRepository.findById(id);
+        if (tempPizza.isPresent()) {
+            Pizza pizza = tempPizza.get();
+            pizza.setPrice(pizza.calculatePrice());
+            return pizza;
+        }
+        return tempPizza.get();
     }
 }

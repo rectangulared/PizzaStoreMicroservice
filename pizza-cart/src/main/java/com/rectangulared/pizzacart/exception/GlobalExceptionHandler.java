@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    //@ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleNotFullException() {
         return ResponseEntity.badRequest().build();
     }
