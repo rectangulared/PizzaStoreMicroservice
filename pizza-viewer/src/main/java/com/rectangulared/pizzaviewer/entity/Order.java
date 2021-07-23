@@ -1,6 +1,8 @@
 package com.rectangulared.pizzaviewer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
+@Data
+@NoArgsConstructor
 public class Order {
 
     @Id
@@ -27,35 +31,9 @@ public class Order {
     @JsonIgnore
     private List<Pizza> pizzas;
 
-    public Order() {}
-
     public Order(int id, Date createdAt, List<Pizza> pizzas) {
         this.id = id;
         this.createdAt = createdAt;
-        this.pizzas = pizzas;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date timeStamp) {
-        this.createdAt = timeStamp;
-    }
-
-    public List<Pizza> getPizzas() {
-        return pizzas;
-    }
-
-    public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
     }
 }

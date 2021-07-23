@@ -1,19 +1,28 @@
 package com.rectangulared.pizzabuilder.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+@Data
 public class PizzaDTO {
+
     @NotNull
     @NotEmpty
     private String name;
+
     @NotNull
     @NotEmpty
     private Integer[] ingredients;
+
     @NotNull
     private PizzasForm pizzasForm;
+
     @NotNull
     private boolean hasCheeseBoards;
+
     @NotNull
     private boolean defaultPizza;
 
@@ -22,46 +31,6 @@ public class PizzaDTO {
         this.ingredients = ingredients;
         this.pizzasForm = pizzasForm;
         this.hasCheeseBoards = hasCheeseBoards;
-        this.defaultPizza = defaultPizza;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer[] getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(Integer[] ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public PizzasForm getPizzasForm() {
-        return pizzasForm;
-    }
-
-    public void setPizzasForm(PizzasForm pizzasForm) {
-        this.pizzasForm = pizzasForm;
-    }
-
-    public boolean isHasCheeseBoards() {
-        return hasCheeseBoards;
-    }
-
-    public void setHasCheeseBoards(boolean hasCheeseBoards) {
-        this.hasCheeseBoards = hasCheeseBoards;
-    }
-
-    public boolean isDefaultPizza() {
-        return defaultPizza;
-    }
-
-    public void setDefaultPizza(boolean defaultPizza) {
         this.defaultPizza = defaultPizza;
     }
 }
