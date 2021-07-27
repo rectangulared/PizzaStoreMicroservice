@@ -1,6 +1,6 @@
 package com.rectangulared.pizzacart.controller;
 
-import com.rectangulared.pizzacart.entity.Pizza;
+import com.rectangulared.common.entity.Pizza;
 import com.rectangulared.pizzacart.service.PizzaCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,12 +1,13 @@
 package com.rectangulared.pizzabuilder.service;
 
-import com.rectangulared.pizzabuilder.entity.Ingredient;
-import com.rectangulared.pizzabuilder.entity.Pizza;
-import com.rectangulared.pizzabuilder.entity.PizzaDTO;
+import com.rectangulared.common.entity.Ingredient;
+import com.rectangulared.common.entity.Pizza;
+import com.rectangulared.common.entity.PizzaDTO;
+import com.rectangulared.common.repository.IngredientRepository;
+import com.rectangulared.common.repository.PizzaRepository;
 import com.rectangulared.pizzabuilder.exception.GlobalExceptionHandler;
 import com.rectangulared.pizzabuilder.exception.NotCompletePizzaException;
-import com.rectangulared.pizzabuilder.repository.IngredientRepository;
-import com.rectangulared.pizzabuilder.repository.PizzaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;

@@ -1,0 +1,94 @@
+version: "3.7"
+
+services:
+  pizza-viewer:
+    image: rectangulared/pizza-viewer:1.0-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8000:8000"
+    networks:
+      - pizza-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      ZIPKIN: http://zipkin:9411/
+      RABBITMQ: rabbitmq
+      ZIPKIN-SENDER: rabbit
+
+  pizza-cart:
+    image: rectangulared/pizza-cart:1.0-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8200:8200"
+    networks:
+      - pizza-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      ZIPKIN: http://zipkin:9411/
+      RABBITMQ: rabbitmq
+      ZIPKIN-SENDER: rabbit
+
+  pizza-builder:
+    image: rectangulared/pizza-builder:1.0.0-RELEASE
+    mem_limit: 700m
+    ports:
+        - "8100:8100"
+    networks:
+        - pizza-network
+    depends_on:
+        - naming-server
+        - rabbitmq
+    environment:
+        ZIPKIN: http://zipkin:9411/
+        RABBITMQ: rabbitmq
+        ZIPKIN-SENDER: rabbit
+
+  naming-server:
+    image: rectangulared/naming-server:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8761:8761"
+    networks:
+      - pizza-network
+
+  api-gateway:
+    image: rectangulared/api-gateway:0.0.1-SNAPSHOT
+    mem_limit: 701m
+    ports:
+      - "8765:8765"
+    networks:
+      - pizza-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      ZIPKIN: http://zipkin:9411/
+      RABBITMQ: rabbitmq
+      ZIPKIN-SENDER: rabbit
+
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    ports:
+      - "9411:9411"
+    depends_on:
+      - rabbitmq
+    networks:
+      - pizza-network
+
+  rabbitmq:
+    image: rabbitmq
+    mem_limit: 700m
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - pizza-network
+
+networks:
+  pizza-network:
+    external:
+      name: pizza-network

@@ -1,4 +1,4 @@
-package com.rectangulared.pizzacart.entity;
+package com.rectangulared.common.entity;
 
 public enum IngredientType {
     SAUSE,

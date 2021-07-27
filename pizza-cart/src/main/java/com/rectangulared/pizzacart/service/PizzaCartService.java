@@ -1,9 +1,9 @@
 package com.rectangulared.pizzacart.service;
 
-import com.rectangulared.pizzacart.entity.Order;
-import com.rectangulared.pizzacart.entity.Pizza;
-import com.rectangulared.pizzacart.repository.OrderRepository;
-import com.rectangulared.pizzacart.repository.PizzaRepository;
+import com.rectangulared.common.entity.Order;
+import com.rectangulared.common.entity.Pizza;
+import com.rectangulared.common.repository.OrderRepository;
+import com.rectangulared.common.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

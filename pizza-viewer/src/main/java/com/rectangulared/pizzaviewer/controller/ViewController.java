@@ -1,6 +1,6 @@
 package com.rectangulared.pizzaviewer.controller;
 
-import com.rectangulared.pizzaviewer.entity.Pizza;
+import com.rectangulared.common.entity.Pizza;
 import com.rectangulared.pizzaviewer.service.PizzaViewerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

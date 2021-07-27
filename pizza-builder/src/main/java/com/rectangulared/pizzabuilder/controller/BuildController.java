@@ -1,9 +1,9 @@
 package com.rectangulared.pizzabuilder.controller;
 
-import com.rectangulared.pizzabuilder.entity.Ingredient;
-import com.rectangulared.pizzabuilder.entity.Pizza;
-import com.rectangulared.pizzabuilder.entity.PizzaDTO;
-import com.rectangulared.pizzabuilder.entity.PizzasForm;
+import com.rectangulared.common.entity.Ingredient;
+import com.rectangulared.common.entity.Pizza;
+import com.rectangulared.common.entity.PizzaDTO;
+import com.rectangulared.common.entity.PizzasForm;
 import com.rectangulared.pizzabuilder.service.PizzaBuilderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

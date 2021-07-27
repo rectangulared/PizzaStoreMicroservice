@@ -1,6 +1,6 @@
-package com.rectangulared.pizzaviewer.repository;
+package com.rectangulared.common.repository;
 
-import com.rectangulared.pizzaviewer.entity.Pizza;
+import com.rectangulared.common.entity.Pizza;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

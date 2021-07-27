@@ -1,4 +1,4 @@
-package com.rectangulared.pizzacart.entity;
+package com.rectangulared.common.entity;
 
 public enum PizzasForm {
     SMALL_CIRCLE(0.75),

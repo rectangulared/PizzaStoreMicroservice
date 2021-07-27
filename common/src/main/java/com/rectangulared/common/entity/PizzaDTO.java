@@ -1,7 +1,6 @@
-package com.rectangulared.pizzabuilder.entity;
+package com.rectangulared.common.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

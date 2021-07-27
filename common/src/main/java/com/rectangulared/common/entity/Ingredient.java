@@ -1,4 +1,4 @@
-package com.rectangulared.pizzaviewer.entity;
+package com.rectangulared.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

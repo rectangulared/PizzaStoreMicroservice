@@ -1,4 +1,4 @@
-package com.rectangulared.pizzacart.entity;
+package com.rectangulared.common.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

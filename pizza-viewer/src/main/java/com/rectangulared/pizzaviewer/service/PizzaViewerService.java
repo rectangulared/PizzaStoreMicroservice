@@ -1,7 +1,7 @@
 package com.rectangulared.pizzaviewer.service;
 
-import com.rectangulared.pizzaviewer.entity.Pizza;
-import com.rectangulared.pizzaviewer.repository.PizzaRepository;
+import com.rectangulared.common.entity.Pizza;
+import com.rectangulared.common.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
