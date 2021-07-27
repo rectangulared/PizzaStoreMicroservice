@@ -73,4 +73,13 @@
         </dependencies>
     </dependencyManagement>
 
+    <modules>
+        <module>api-gateway</module>
+        <module>common</module>
+        <module>naming-server</module>
+        <module>pizza-viewer</module>
+        <module>pizza-cart</module>
+        <module>pizza-builder</module>
+    </modules>
+
 </project>

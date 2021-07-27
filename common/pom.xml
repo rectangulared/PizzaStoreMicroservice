@@ -49,7 +49,11 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.23</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

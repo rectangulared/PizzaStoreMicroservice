@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   pizza-viewer:
-    image: rectangulared/pizza-viewer:1.0-SNAPSHOT
+    image: pizza-viewer
     mem_limit: 700m
     ports:
       - "8000:8000"
@@ -17,7 +17,7 @@ services:
       ZIPKIN-SENDER: rabbit
 
   pizza-cart:
-    image: rectangulared/pizza-cart:1.0-SNAPSHOT
+    image: pizza-cart
     mem_limit: 700m
     ports:
       - "8200:8200"
@@ -32,7 +32,7 @@ services:
       ZIPKIN-SENDER: rabbit
 
   pizza-builder:
-    image: rectangulared/pizza-builder:1.0.0-RELEASE
+    image: pizza-builder
     mem_limit: 700m
     ports:
         - "8100:8100"
