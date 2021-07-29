@@ -12,13 +12,16 @@ public class ApiGatewayConfiguration {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(p -> p
-                        .path("/builder/**")
+                        .path("/pizza-builder/**")
+                        .filters(f -> f.stripPrefix(1))
                         .uri("lb://pizza-builder"))
                 .route(p -> p
-                        .path("")
+                        .path("/pizza-viewer/**")
+                        .filters(f -> f.stripPrefix(1))
                         .uri("lb://pizza-viewer"))
                 .route(p -> p
-                        .path("/cart/**")
+                        .path("/pizza-cart/**")
+                        .filters(f -> f.stripPrefix(1))
                         .uri("lb://pizza-cart"))
                 .build();
     }

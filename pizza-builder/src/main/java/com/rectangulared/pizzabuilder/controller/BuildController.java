@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/builder")
+@RequestMapping("/")
 public class BuildController {
 
     private final PizzaBuilderService pizzaBuilderService;

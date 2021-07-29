@@ -1,11 +1,17 @@
 version: "3.7"
 
+volumes:
+  grafana-storage:
+
+networks:
+  pizza-network:
+    name: pizza-network
+
 services:
   pizza-viewer:
     image: pizza-viewer
-    mem_limit: 700m
     ports:
-      - "8000:8000"
+      - "8100:8100"
     networks:
       - pizza-network
     depends_on:
@@ -15,10 +21,10 @@ services:
       ZIPKIN: http://zipkin:9411/
       RABBITMQ: rabbitmq
       ZIPKIN-SENDER: rabbit
+    restart: unless-stopped
 
   pizza-cart:
     image: pizza-cart
-    mem_limit: 700m
     ports:
       - "8200:8200"
     networks:
@@ -30,12 +36,12 @@ services:
       ZIPKIN: http://zipkin:9411/
       RABBITMQ: rabbitmq
       ZIPKIN-SENDER: rabbit
+    restart: unless-stopped
 
   pizza-builder:
     image: pizza-builder
-    mem_limit: 700m
     ports:
-        - "8100:8100"
+        - "8000:8000"
     networks:
         - pizza-network
     depends_on:
@@ -45,18 +51,18 @@ services:
         ZIPKIN: http://zipkin:9411/
         RABBITMQ: rabbitmq
         ZIPKIN-SENDER: rabbit
+    restart: unless-stopped
 
   naming-server:
     image: rectangulared/naming-server:0.0.1-SNAPSHOT
-    mem_limit: 700m
     ports:
       - "8761:8761"
     networks:
       - pizza-network
+    restart: unless-stopped
 
   api-gateway:
     image: rectangulared/api-gateway:0.0.1-SNAPSHOT
-    mem_limit: 701m
     ports:
       - "8765:8765"
     networks:
@@ -68,27 +74,43 @@ services:
       ZIPKIN: http://zipkin:9411/
       RABBITMQ: rabbitmq
       ZIPKIN-SENDER: rabbit
+    restart: unless-stopped
 
   zipkin:
     image: openzipkin/zipkin
-    mem_limit: 700m
     ports:
       - "9411:9411"
     depends_on:
       - rabbitmq
     networks:
       - pizza-network
+    restart: unless-stopped
 
   rabbitmq:
     image: rabbitmq
-    mem_limit: 700m
     ports:
       - "5672:5672"
       - "15672:15672"
     networks:
       - pizza-network
+    restart: unless-stopped
 
-networks:
-  pizza-network:
-    external:
-      name: pizza-network
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - pizza-network
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - pizza-network
+    restart: unless-stopped

@@ -1,0 +1,29 @@
+global:
+  scrape_interval : 15s
+  evaluation_interval : 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+
+  - job_name: 'api-gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:8765']
+
+  - job_name: 'pizza-viewer'
+    metrics_path: '/pizza-viewer/actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:8765']
+
+  - job_name: 'pizza-cart'
+    metrics_path: '/pizza-cart/actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:8765']
+
+  - job_name: 'pizza-builder'
+    metrics_path: '/pizza-builder/actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:8765']
+
