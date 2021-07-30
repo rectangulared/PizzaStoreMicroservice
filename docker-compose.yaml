@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   naming-server:
-    image: rectangulared/naming-server:0.0.1-SNAPSHOT
+    image: naming-server
     ports:
       - "8761:8761"
     networks:
@@ -62,7 +62,7 @@ services:
     restart: unless-stopped
 
   api-gateway:
-    image: rectangulared/api-gateway:0.0.1-SNAPSHOT
+    image: api-gateway
     ports:
       - "8765:8765"
     networks:
