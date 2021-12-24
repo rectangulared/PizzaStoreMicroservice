@@ -42,11 +42,6 @@
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
 			<version>3.0.4</version>
 		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>8.2.2</version>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

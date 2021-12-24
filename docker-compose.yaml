@@ -8,6 +8,18 @@ networks:
     name: pizza-network
 
 services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - pizza-network
+    environment:
+      - POSTGRES_DB=pizza_store_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: unless-stopped
+
   pizza-viewer:
     image: pizza-viewer
     ports:
